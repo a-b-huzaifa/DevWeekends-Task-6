@@ -1,6 +1,3 @@
-// Functional component that receives data and callbacks via PROPS.
-// It never touches state directly -- the parent (TodoList/App) owns
-// the state and passes down `todo` plus the handlers it needs.
 function TodoItem({ todo, onToggle, onDelete }) {
   return (
     <li className={`todo-item ${todo.done ? 'done' : ''}`}>

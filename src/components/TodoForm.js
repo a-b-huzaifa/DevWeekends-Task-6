@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-// Controlled input: the <input> value is driven entirely by React
-// state (`text`), and every keystroke updates that state via onChange.
 function TodoForm({ onAdd }) {
   const [text, setText] = useState('')
 

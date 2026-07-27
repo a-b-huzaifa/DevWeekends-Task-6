@@ -15,13 +15,9 @@ function loadInitialTodos() {
 }
 
 function App() {
-  // useState: lazy initializer reads from localStorage once on mount
   const [todos, setTodos] = useState(loadInitialTodos)
-  // useState: controls which subset of todos is currently visible
-  const [filter, setFilter] = useState('all') // 'all' | 'active' | 'done'
+  const [filter, setFilter] = useState('all')
 
-  // useEffect: side effect that runs whenever `todos` changes,
-  // syncing the in-memory state back out to localStorage.
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(todos))
   }, [todos])
@@ -43,7 +39,6 @@ function App() {
     setTodos((prev) => prev.filter((t) => t.id !== id))
   }
 
-  // Derived value used for CONDITIONAL RENDERING below
   const visibleTodos = todos.filter((t) => {
     if (filter === 'active') return !t.done
     if (filter === 'done') return t.done
@@ -86,7 +81,6 @@ function App() {
           onDelete={deleteTodo}
         />
 
-        {/* Conditional rendering: only show this line if there are todos at all */}
         {todos.length > 0 && (
           <p className="status-line">
             {remaining} of {todos.length} remaining

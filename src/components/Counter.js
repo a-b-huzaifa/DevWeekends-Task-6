@@ -1,7 +1,5 @@
 import { useState } from 'react'
 
-// Functional component. No props needed here, but this shows
-// useState (local state) working.
 function Counter() {
   const [count, setCount] = useState(0)
 
